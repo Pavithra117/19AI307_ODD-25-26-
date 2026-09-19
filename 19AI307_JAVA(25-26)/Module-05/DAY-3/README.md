@@ -24,8 +24,8 @@ To write a Java program that creates a new file named example.txt using the File
  ```
 /*
 Program to implement a File Handling using Java
-Developed by: A Sathya Narayanan
-RegisterNumber: 212225040392
+Developed by: Pavithra K
+RegisterNumber: 212224240112
 */
 ```
 
