@@ -1,20 +1,25 @@
-# Ex.No:5(C)  FILE HANDLING USING JAVA
+# Ex.No:5(E) MULTITHREADING -SYNCHRONIZATION
+
 ## QUESTION:
-Write a Java program to create a new file named example.txt.
+Maintain two int variables a and b, read their initial values from user. Use synchronized block to swap them and print swapped values.
 
 ## AIM:
-To write a Java program that creates a new file named example.txt using the File class and handles any possible I/O exceptions.
+To write a Java program that reads two integers from the user and swaps their values using a synchronized block to ensure thread-safe operations.
 
 ## ALGORITHM :
-1. Create a File object pointing to "example.txt".
+1. Read two integer values a and b from the user.
 
-2. Call the createNewFile() method to attempt creating the file.
+2. Create a lock object to use inside the synchronized block.
 
-3. If the method returns true, print that the file was created.
+3. Enter the synchronized block using the lock object.
 
-4. If it returns false, print that the file already exists.
+4. Swap the values of a and b using a temporary variable.
 
-5. Surround the file-creation logic with a try–catch block to handle IOException.
+5. Exit the synchronized block once the swap is complete.
+
+6. Print the swapped values of a and b.
+
+7. Close the scanner.
 
 
 
@@ -23,7 +28,7 @@ To write a Java program that creates a new file named example.txt using the File
 ## PROGRAM:
  ```
 /*
-Program to implement a File Handling using Java
+Program to implement a Synchronization concept using Java
 Developed by: Pavithra K
 RegisterNumber: 212224240112
 */
@@ -31,28 +36,33 @@ RegisterNumber: 212224240112
 
 ## SOURCE CODE:
 ```
-import java.io.File;
-import java.io.IOException;
+import java.util.Scanner;
 
-public class CreateNewFileExample {
+public class SwapUsingSynchronized {
     public static void main(String[] args) {
-        try {
-            File file = new File("example.txt");
-            if (file.createNewFile()) {
-                System.out.println("File created: " + file.getName());
-            } else {
-                System.out.println("File already exists.");
-            }
-        } catch (IOException e) {
-            System.out.println("An error occurred: " + e.getMessage());
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        Object lock = new Object();
+
+        synchronized (lock) {
+            int temp = a;
+            a = b;
+            b = temp;
         }
+
+        System.out.println("a = " + a);
+        System.out.println("b = " + b);
+        sc.close();
     }
 }
 ```
 
+
 ## OUTPUT:
-<img width="768" height="255" alt="image" src="https://github.com/user-attachments/assets/ae4f968a-af58-4f91-8e79-baeea0fd9f29" />
+<img width="457" height="390" alt="image" src="https://github.com/user-attachments/assets/2fb44153-47e4-4ac3-8872-e321e221fc56" />
+
 
 
 ## RESULT:
-Therefore the program successfully creates a new file named example.txt if it does not already exist.
+Therefore the program successfully swaps two integers within a synchronized block, ensuring safe and controlled access.
